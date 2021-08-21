@@ -1,6 +1,11 @@
 pipeline {
 
-  agent none
+  agent {
+    docker {
+      image 'python:3.8-slim-buster'
+      args '-u 0:0 -v /tmp/flask-docker:/root/.cache'
+    }
+  }
 
   environment {
     DOCKER_IMAGE = "hunghq1096/flask-docker"
@@ -8,12 +13,12 @@ pipeline {
 
   stages {
     stage("Test1") {
-      agent {
-          docker {
-            image 'python:3.8-slim-buster'
-            args '-u 0:0 -v /tmp/flask-docker:/root/.cache'
-          }
-      }
+      // agent {
+      //     docker {
+      //       image 'python:3.8-slim-buster'
+      //       args '-u 0:0 -v /tmp/flask-docker:/root/.cache'
+      //     }
+      // }
       steps {
         echo "Test1"
         sh "pip install poetry"
@@ -23,12 +28,12 @@ pipeline {
     }
 
     stage("Test2") {
-      agent {
-          docker {
-            image 'python:3.8-slim-buster'
-            args '-u 0:0 -v /tmp/flask-docker:/root/.cache'
-          }
-      }
+      // agent {
+      //     docker {
+      //       image 'python:3.8-slim-buster'
+      //       args '-u 0:0 -v /tmp/flask-docker:/root/.cache'
+      //     }
+      // }
       steps {
         echo "Test2"
         sh "pip install poetry"
