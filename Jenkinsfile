@@ -11,7 +11,7 @@ pipeline {
       agent {
           docker {
             image 'python:3.8-slim-buster'
-            args '-v /tmp/flask-docker:/root/.cache'
+            args '-u 0:0 -v /tmp/flask-docker:/root/.cache'
           }
       }
       steps {
@@ -26,7 +26,7 @@ pipeline {
       agent {
           docker {
             image 'python:3.8-slim-buster'
-            args '-v /tmp/flask-docker:/root/.cache'
+            args '-u 0:0 -v /tmp/flask-docker:/root/.cache'
           }
       }
       steps {
