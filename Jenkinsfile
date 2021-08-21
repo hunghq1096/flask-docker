@@ -7,7 +7,7 @@ pipeline {
   }
 
   stages {
-    stage("Test") {
+    stage("Test1") {
       agent {
           docker {
             image 'python:3.8-slim-buster'
@@ -22,7 +22,7 @@ pipeline {
       }
     }
 
-    stage("Test") {
+    stage("Test2") {
       agent {
           docker {
             image 'python:3.8-slim-buster'
